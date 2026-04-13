@@ -1,19 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "esnext",
+    "target": "ES6",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "ignoreDeprecations": "6.0",
     "baseUrl": "./",
-    "moduleResolution": "node",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
-  }
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  // 排除不存在的文件，避免 TypeScript 尝试解析
+  "exclude": [
+    "src/views/myHome.vue",
+    "src/views/myRegister.vue",
+    "src/views/mySports.vue",
+    "src/views/userLogin.vue"
+  ]
 }

@@ -1,0 +1,242 @@
+/* 全局样式重置 & 通用样式 - 商务蓝色风格 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #334155;
+  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* 通用动画 */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ 卡片统一样式 ============ */
+.el-card {
+  border-radius: 14px !important;
+  box-shadow: 0 2px 12px rgba(59, 130, 246, 0.08) !important;
+  border: 1px solid rgba(59, 130, 246, 0.15) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
+}
+
+.el-card__header {
+  padding: 16px 24px !important;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.el-card__body {
+  padding: 24px;
+}
+
+/* ============ 按钮统一样式 ============ */
+.el-button--primary {
+  background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 12px 20px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.el-button--primary:hover {
+  background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35) !important;
+}
+
+/* ============ 输入框统一样式 ============ */
+.el-input__wrapper {
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  border: 1.5px solid #e2e8f0 !important;
+  transition: all 0.3s ease !important;
+}
+
+.el-input__wrapper:hover {
+  border-color: #3B82F6 !important;
+}
+
+.el-input__wrapper.is-focus {
+  border-color: #3B82F6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+}
+
+/* 下拉选择框 */
+.el-select .el-input__wrapper {
+  border-radius: 10px !important;
+}
+
+/* ============ 表格统一样式 ============ */
+.el-table {
+  --el-table-header-text-color: #475569;
+  --el-table-row-hover-bg-color: #EFF6FF;
+  --el-table-border-color: #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.el-table th.el-table__cell {
+  background: #F9FAFB !important;
+  color: #475569 !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+.el-table td.el-table__cell {
+  color: #475569;
+  font-size: 14px;
+}
+
+.el-table tr:hover > td.el-table__cell {
+  background: #EFF6FF !important;
+}
+
+/* ============ 对话框统一样式 ============ */
+.el-dialog {
+  border-radius: 16px !important;
+  overflow: hidden;
+}
+
+.el-dialog__header {
+  padding: 20px 24px !important;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.el-dialog__title {
+  font-weight: 700 !important;
+  color: #334155 !important;
+  font-size: 18px !important;
+}
+
+.el-dialog__body {
+  padding: 24px !important;
+}
+
+/* 表单统一样式 */
+.el-form-item__label {
+  color: #475569 !important;
+  font-weight: 500 !important;
+}
+
+.el-form-item {
+  margin-bottom: 20px !important;
+}
+
+/* ============ 分页统一样式 ============ */
+.el-pagination {
+  --el-pagination-button-bg-color: #f9fafb;
+}
+
+.el-pagination .el-pager li {
+  border-radius: 8px;
+  margin: 0 4px;
+  font-weight: 500;
+}
+
+.el-pagination .el-pager li.is-active {
+  background: #3B82F6 !important;
+  color: #fff !important;
+}
+
+/* ============ 标签统一样式 ============ */
+.el-tag {
+  border-radius: 6px !important;
+  border: none !important;
+  padding: 4px 10px !important;
+  font-weight: 500 !important;
+}
+
+.el-tag--success {
+  background: rgba(34, 197, 94, 0.1) !important;
+  color: #22c55e !important;
+}
+
+.el-tag--warning {
+  background: rgba(245, 158, 11, 0.1) !important;
+  color: #f59e0b !important;
+}
+
+.el-tag--danger {
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: #ef4444 !important;
+}
+
+.el-tag--info {
+  background: rgba(100, 116, 139, 0.1) !important;
+  color: #64748b !important;
+}
+
+.el-tag--primary {
+  background: rgba(59, 130, 246, 0.1) !important;
+  color: #3B82F6 !important;
+}
+
+/* ============ 操作按钮统一样式 ============ */
+.el-button--primary.is-link {
+  color: #3B82F6 !important;
+  font-weight: 600 !important;
+}
+
+.el-button--primary.is-link:hover {
+  color: #2563EB !important;
+  background: rgba(59, 130, 246, 0.1) !important;
+}
+
+.el-button--danger.is-link {
+  color: #ef4444 !important;
+  font-weight: 600 !important;
+}
+
+.el-button--danger.is-link:hover {
+  color: #dc2626 !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+
+/* ============ 消息提示统一样式 ============ */
+.el-message--success {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+.el-message--error {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* ============ 响应式布局 ============ */
+@media (max-width: 768px) {
+  .el-card__body {
+    padding: 16px;
+  }
+}

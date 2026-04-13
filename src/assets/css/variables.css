@@ -1,0 +1,93 @@
+/* 商务蓝色系设计系统变量 - Design Tokens */
+:root {
+  /* ============ 颜色系统 ============ */
+  /* 主色调 - 商务蓝色 */
+  --color-primary-light: #93C5FD;    /* 浅蓝色 */
+  --color-primary: #3B82F6;           /* 主蓝色 */
+  --color-primary-dark: #2563EB;    /* 深蓝色 */
+
+  /* 辅助色 - 莫兰迪色系 */
+  --color-secondary: #F3E9D2;          /* 米色调 */
+  --color-accent-pink: #FFCAD4;         /* 粉色 */
+  --color-accent-pink-dark: #E89BA8;    /* 深粉色 */
+  --color-accent-gold: #B8A67A;        /* 金色调 */
+
+  /* 功能色 */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #64748b;
+
+  /* 中性色 */
+  --color-text-primary: #334155;        /* 主要文本 */
+  --color-text-secondary: #475569;     /* 次要文本 */
+  --color-text-muted: #9CA3AF;         /* 弱化文本 */
+  --color-text-placeholder: #94a3b8;    /* 占位符 */
+
+  /* 边框色 */
+  --color-border: #e2e8f0;             /* 默认边框 */
+  --color-border-light: #f1f5f9;       /* 浅边框 */
+  --color-border-focus: #3B82F6;         /* 聚焦边框 */
+
+  /* 背景色 */
+  --color-bg-page: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+  --color-bg-card: rgba(255, 255, 255, 0.85);
+  --color-bg-card-hover: rgba(255, 255, 255, 0.95);
+  --color-bg-header: #f8fafc;           /* 表头背景 */
+  --color-bg-hover: #EFF6FF;             /* 悬停背景 */
+
+  /* ============ 间距系统 ============ */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-base: 16px;
+  --spacing-lg: 20px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+
+  /* ============ 圆角系统 ============ */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-2xl: 16px;
+
+  /* ============ 阴影系统 ============ */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.1);
+
+  /* ============ 按钮系统 ============ */
+  --btn-height-sm: 32px;
+  --btn-height-base: 40px;
+  --btn-height-lg: 44px;
+  --btn-padding-sm: 8px 14px;
+  --btn-padding-base: 10px 18px;
+  --btn-padding-lg: 12px 20px;
+
+  /* ============ 动画系统 ============ */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ============ 字体系统 ============ */
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-md: 15px;
+  --font-size-lg: 17px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 22px;
+}
+
+/* 响应式断点 */
+:root {
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+}
