@@ -105,8 +105,7 @@ const menuItems = computed(() => {
     { path: '/dashboard', icon: HomeFilled, title: '首页' }
   ]
   if (isStudent.value) {
-    // 学生角色：显示报名菜单
-    items.push({ path: '/registration', icon: Medal, title: '项目报名' })
+    // 学生角色：显示首页
   } else {
     // 管理员角色：显示所有管理菜单
     items.push(

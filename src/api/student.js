@@ -37,3 +37,10 @@ export const deleteStudent = (id) => {
     method: 'delete'
   })
 }
+
+export const getStudentProjects = (id) => {
+  return request({
+    url: `/students/${id}/projects`,
+    method: 'get'
+  })
+}

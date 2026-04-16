@@ -13,9 +13,13 @@
 
       <!-- 搜索栏 -->
       <div class="search-section">
+        <el-select v-model="searchType" style="width: 120px; margin-right: 10px">
+          <el-option label="裁判姓名" value="name" />
+          <el-option label="项目名称" value="projectName" />
+        </el-select>
         <el-input
           v-model="searchName"
-          placeholder="请输入裁判姓名"
+          :placeholder="searchType === 'name' ? '请输入裁判姓名' : '请输入项目名称'"
           :prefix-icon="Search"
           clearable
           @clear="loadData"
@@ -52,6 +56,27 @@
           </template>
         </el-table-column>
         <el-table-column prop="phone" label="联系电话" width="140" />
+        <el-table-column label="执裁项目" min-width="150" align="center">
+          <template #default="{ row }">
+            <el-tooltip
+              v-if="refereeProjectsCache[row.refereeId]?.length > 0"
+              placement="top"
+              effect="light"
+            >
+              <template #content>
+                <div style="max-height: 200px; overflow-y: auto">
+                  <div v-for="(project, index) in refereeProjectsCache[row.refereeId]" :key="index">
+                    {{ project }}
+                  </div>
+                </div>
+              </template>
+              <el-tag type="success" size="small">
+                {{ refereeProjectsCache[row.refereeId].length }} 个项目
+              </el-tag>
+            </el-tooltip>
+            <span v-else class="no-project">-</span>
+          </template>
+        </el-table-column>
         <el-table-column label="操作" width="200" fixed="right">
           <template #default="{ row }">
             <el-button type="primary" link :icon="Edit" @click="handleEdit(row)">编辑</el-button>
@@ -134,11 +159,13 @@ import {
   getRefereePage,
   addReferee,
   updateReferee,
-  deleteReferee
+  deleteReferee,
+  getRefereeProjects
 } from '../api/referee'
 
 // 查询参数
 const searchName = ref('')
+const searchType = ref('name')
 const currentPage = ref(1)
 const pageSize = ref(10)
 const total = ref(0)
@@ -146,6 +173,9 @@ const loading = ref(false)
 
 // 表格数据
 const refereeList = ref([])
+
+// 项目名称缓存
+const refereeProjectsCache = ref({})
 
 // 对话框
 const dialogVisible = ref(false)
@@ -192,11 +222,16 @@ const rules = {
 const loadData = async () => {
   loading.value = true
   try {
-    const res = await getRefereePage({
+    const params = {
       pageNum: currentPage.value,
-      pageSize: pageSize.value,
-      name: searchName.value || undefined
-    })
+      pageSize: pageSize.value
+    }
+    if (searchType.value === 'name') {
+      params.name = searchName.value || undefined
+    } else {
+      params.projectName = searchName.value || undefined
+    }
+    const res = await getRefereePage(params)
     console.log('裁判数据响应:', res)
     if (res.data) {
       refereeList.value = res.data.records || res.data.list || []
@@ -206,6 +241,16 @@ const loadData = async () => {
         total.value = res.data.pages * res.data.size
       } else {
         total.value = res.data.records?.length || 0
+      }
+
+      // 加载每个裁判的项目名称
+      for (const referee of refereeList.value) {
+        try {
+          const projectRes = await getRefereeProjects(referee.refereeId)
+          refereeProjectsCache.value[referee.refereeId] = projectRes.data || []
+        } catch (e) {
+          refereeProjectsCache.value[referee.refereeId] = []
+        }
       }
     } else {
       refereeList.value = []

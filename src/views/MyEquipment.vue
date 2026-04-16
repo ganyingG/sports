@@ -13,9 +13,13 @@
 
       <!-- 搜索栏 -->
       <div class="search-section">
+        <el-select v-model="searchType" style="width: 120px; margin-right: 10px">
+          <el-option label="器材名称" value="equipmentName" />
+          <el-option label="项目名称" value="projectName" />
+        </el-select>
         <el-input
           v-model="searchName"
-          placeholder="请输入器材名称"
+          :placeholder="searchType === 'equipmentName' ? '请输入器材名称' : '请输入项目名称'"
           :prefix-icon="Search"
           clearable
           @clear="loadData"
@@ -41,6 +45,27 @@
             <el-tag :type="getStatusType(row.status)">
               {{ getStatusName(row.status) }}
             </el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column label="使用项目" min-width="150" align="center">
+          <template #default="{ row }">
+            <el-tooltip
+              v-if="equipmentProjectsCache[row.equipmentId]?.length > 0"
+              placement="top"
+              effect="light"
+            >
+              <template #content>
+                <div style="max-height: 200px; overflow-y: auto">
+                  <div v-for="(project, index) in equipmentProjectsCache[row.equipmentId]" :key="index">
+                    {{ project }}
+                  </div>
+                </div>
+              </template>
+              <el-tag type="success" size="small">
+                {{ equipmentProjectsCache[row.equipmentId].length }} 个项目
+              </el-tag>
+            </el-tooltip>
+            <span v-else class="no-project">-</span>
           </template>
         </el-table-column>
         <el-table-column label="操作" width="200" fixed="right">
@@ -113,11 +138,13 @@ import {
   getEquipmentPage,
   addEquipment,
   updateEquipment,
-  deleteEquipment
+  deleteEquipment,
+  getEquipmentProjects
 } from '../api/equipment'
 
 // 查询参数
 const searchName = ref('')
+const searchType = ref('equipmentName')
 const currentPage = ref(1)
 const pageSize = ref(10)
 const total = ref(0)
@@ -125,6 +152,9 @@ const loading = ref(false)
 
 // 表格数据
 const equipmentList = ref([])
+
+// 项目名称缓存
+const equipmentProjectsCache = ref({})
 
 // 对话框
 const dialogVisible = ref(false)
@@ -179,11 +209,16 @@ const rules = {
 const loadData = async () => {
   loading.value = true
   try {
-    const res = await getEquipmentPage({
+    const params = {
       pageNum: currentPage.value,
-      pageSize: pageSize.value,
-      equipmentName: searchName.value || undefined
-    })
+      pageSize: pageSize.value
+    }
+    if (searchType.value === 'equipmentName') {
+      params.equipmentName = searchName.value || undefined
+    } else {
+      params.projectName = searchName.value || undefined
+    }
+    const res = await getEquipmentPage(params)
     console.log('器材数据响应:', res)
     if (res.data) {
       equipmentList.value = res.data.records || res.data.list || []
@@ -193,6 +228,16 @@ const loadData = async () => {
         total.value = res.data.pages * res.data.size
       } else {
         total.value = res.data.records?.length || 0
+      }
+
+      // 加载每个器材的使用项目名称
+      for (const equipment of equipmentList.value) {
+        try {
+          const projectRes = await getEquipmentProjects(equipment.equipmentId)
+          equipmentProjectsCache.value[equipment.equipmentId] = projectRes.data || []
+        } catch (e) {
+          equipmentProjectsCache.value[equipment.equipmentId] = []
+        }
       }
     } else {
       equipmentList.value = []

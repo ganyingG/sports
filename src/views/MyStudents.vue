@@ -17,27 +17,22 @@
       </template>
 
       <!-- 搜索栏 -->
-      <el-row :gutter="20" class="search-bar">
-        <el-col :span="8" :xs="20" :sm="16" :md="12" :lg="8">
-          <el-input
-            v-model="searchName"
-            placeholder="请输入学生姓名"
-            :prefix-icon="Search"
-            clearable
-            @clear="loadData"
-            @keyup.enter="loadData"
-            class="search-input"
-          />
-        </el-col>
-        <el-col :span="4" :xs="4" :sm="4" :md="3" :lg="4">
-          <el-button 
-            type="primary" 
-            :icon="Search" 
-            @click="loadData"
-            class="search-btn"
-          >搜索</el-button>
-        </el-col>
-      </el-row>
+      <div class="search-section">
+        <el-select v-model="searchType" style="width: 120px; margin-right: 10px">
+          <el-option label="学生姓名" value="name" />
+          <el-option label="项目名称" value="projectName" />
+        </el-select>
+        <el-input
+          v-model="searchName"
+          :placeholder="searchType === 'name' ? '请输入学生姓名' : '请输入项目名称'"
+          :prefix-icon="Search"
+          clearable
+          @clear="loadData"
+          @keyup.enter="loadData"
+          class="search-input"
+        />
+        <el-button type="primary" :icon="Search" @click="loadData">搜索</el-button>
+      </div>
 
       <!-- 表格 -->
       <el-table
@@ -71,6 +66,27 @@
           </template>
         </el-table-column>
         <el-table-column prop="phone" label="手机号" width="140" align="center" />
+        <el-table-column label="参与项目" min-width="150" align="center">
+          <template #default="{ row }">
+            <el-tooltip
+              v-if="studentProjectsCache[row.studentId]?.length > 0"
+              placement="top"
+              effect="light"
+            >
+              <template #content>
+                <div style="max-height: 200px; overflow-y: auto">
+                  <div v-for="(project, index) in studentProjectsCache[row.studentId]" :key="index">
+                    {{ project }}
+                  </div>
+                </div>
+              </template>
+              <el-tag type="success" size="small">
+                {{ studentProjectsCache[row.studentId].length }} 个项目
+              </el-tag>
+            </el-tooltip>
+            <span v-else class="no-project">-</span>
+          </template>
+        </el-table-column>
         <el-table-column prop="remark" label="备注" min-width="150" show-overflow-tooltip />
         <el-table-column label="操作" width="200" fixed="right" align="center">
           <template #default="{ row }">
@@ -211,11 +227,13 @@ import {
   getStudentPage,
   addStudent,
   updateStudent,
-  deleteStudent
+  deleteStudent,
+  getStudentProjects
 } from '../api/student'
 
 // 查询参数
 const searchName = ref('')
+const searchType = ref('name')
 const currentPage = ref(1)
 const pageSize = ref(10)
 const total = ref(0)
@@ -223,6 +241,9 @@ const loading = ref(false)
 
 // 表格数据
 const studentList = ref([])
+
+// 项目名称缓存
+const studentProjectsCache = ref({})
 
 // 对话框
 const dialogVisible = ref(false)
@@ -246,7 +267,7 @@ const studentForm = reactive({
 const rules = {
   studentId: [
     { required: true, message: '请输入学号', trigger: 'blur' },
-    { pattern: /^S\d{8}$/, message: '学号格式不正确（如：S20240001）', trigger: 'blur' }
+    { pattern: /^\d{12}$/, message: '学号格式不正确（如：202300100001）', trigger: 'blur' }
   ],
   name: [
     { required: true, message: '请输入姓名', trigger: 'blur' },
@@ -267,11 +288,16 @@ const rules = {
 const loadData = async () => {
   loading.value = true
   try {
-    const res = await getStudentPage({
+    const params = {
       pageNum: currentPage.value,
-      pageSize: pageSize.value,
-      name: searchName.value || undefined
-    })
+      pageSize: pageSize.value
+    }
+    if (searchType.value === 'name') {
+      params.name = searchName.value || undefined
+    } else {
+      params.projectName = searchName.value || undefined
+    }
+    const res = await getStudentPage(params)
     console.log('完整响应:', res)
 
     if (res.data) {
@@ -286,6 +312,16 @@ const loadData = async () => {
       } else {
         // 兜底：使用 records 长度
         total.value = res.data.records?.length || 0
+      }
+
+      // 加载每个学生的项目名称
+      for (const student of studentList.value) {
+        try {
+          const projectRes = await getStudentProjects(student.studentId)
+          studentProjectsCache.value[student.studentId] = projectRes.data || []
+        } catch (e) {
+          studentProjectsCache.value[student.studentId] = []
+        }
       }
     } else {
       studentList.value = []
@@ -430,9 +466,7 @@ const getDeptName = (deptId) => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 24px;
   background-color: #FFFFFF;
-  border-bottom: 1px solid #E5E7EB;
 }
 
 .header-title {
@@ -467,17 +501,17 @@ const getDeptName = (deptId) => {
 }
 
 /* 搜索栏 */
-.search-bar {
-  margin: 20px 24px 0;
+.search-section {
   display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
   align-items: center;
 }
 
 .search-input {
+  width: 300px;
   border-radius: 10px;
-  height: 42px;
   border: 1.5px solid #E5E7EB;
-  transition: all 0.3s ease;
 }
 
 .search-input:focus {

@@ -54,12 +54,6 @@ const routes = [
         name: 'Equipment',
         component: () => import('../views/MyEquipment.vue'),
         meta: { title: '器材管理' }
-      },
-      {
-        path: 'registration',
-        name: 'Registration',
-        component: () => import('../views/StudentRegistration.vue'),
-        meta: { title: '项目报名', roles: ['student'] }
       }
     ]
   }

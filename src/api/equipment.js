@@ -37,3 +37,10 @@ export const deleteEquipment = (id) => {
     method: 'delete'
   })
 }
+
+export const getEquipmentProjects = (id) => {
+  return request({
+    url: `/equipment/${id}/projects`,
+    method: 'get'
+  })
+}

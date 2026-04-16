@@ -37,3 +37,10 @@ export const deleteReferee = (id) => {
     method: 'delete'
   })
 }
+
+export const getRefereeProjects = (id) => {
+  return request({
+    url: `/referees/${id}/projects`,
+    method: 'get'
+  })
+}
