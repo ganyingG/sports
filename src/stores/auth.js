@@ -37,9 +37,10 @@ export const useAuthStore = defineStore('auth', {
 
         // 4. 登录成功：存储token和用户信息
         this.token = token
-        this.userInfo = responseData.userInfo || null // 兜底空值
+        this.userInfo = responseData.userInfo || { userType: 'student' } // 兜底空值
         this.isLogin = true
         localStorage.setItem('token', token) // 持久化到本地存储
+        localStorage.setItem('userInfo', JSON.stringify(this.userInfo)) // 存储用户信息
 
         console.log('✅ 登录成功，token已存储：', token)
         return true

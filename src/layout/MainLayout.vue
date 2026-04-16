@@ -17,25 +17,13 @@
           text-color="#475569"
           active-text-color="#E89BA8"
         >
-          <el-menu-item index="/dashboard">
-            <el-icon><HomeFilled /></el-icon>
-            <span>首页</span>
-          </el-menu-item>
-          <el-menu-item index="/students">
-            <el-icon><User /></el-icon>
-            <span>学生管理</span>
-          </el-menu-item>
-          <el-menu-item index="/projects">
-            <el-icon><Medal /></el-icon>
-            <span>项目管理</span>
-          </el-menu-item>
-          <el-menu-item index="/referees">
-            <el-icon><Monitor /></el-icon>
-            <span>裁判管理</span>
-          </el-menu-item>
-          <el-menu-item index="/equipment">
-            <el-icon><Box /></el-icon>
-            <span>器材管理</span>
+          <el-menu-item
+            v-for="item in menuItems"
+            :key="item.path"
+            :index="item.path"
+          >
+            <el-icon><component :is="item.icon" /></el-icon>
+            <span>{{ item.title }}</span>
           </el-menu-item>
         </el-menu>
 
@@ -46,7 +34,7 @@
           </div>
           <div class="user-info">
             <div class="user-name">{{ userInfo?.username || '用户' }}</div>
-            <div class="user-role">管理员</div>
+            <div class="user-role">{{ roleName }}</div>
           </div>
           <el-button
             class="logout-btn"
@@ -101,7 +89,40 @@ const authStore = useAuthStore()
 
 const activeMenu = computed(() => route.path)
 const pageTitle = computed(() => route.meta.title || '体育赛事管理系统')
-const userInfo = computed(() => authStore.userInfo)
+
+// 从 localStorage 获取用户信息
+const userInfo = computed(() => {
+  const info = localStorage.getItem('userInfo')
+  return info ? JSON.parse(info) : { username: '用户', userType: 'student' }
+})
+
+// 根据用户类型判断是否为学生
+const isStudent = computed(() => userInfo.value.userType === 'student')
+
+// 根据用户类型决定显示哪些菜单
+const menuItems = computed(() => {
+  const items = [
+    { path: '/dashboard', icon: HomeFilled, title: '首页' }
+  ]
+  if (isStudent.value) {
+    // 学生角色：显示报名菜单
+    items.push({ path: '/registration', icon: Medal, title: '项目报名' })
+  } else {
+    // 管理员角色：显示所有管理菜单
+    items.push(
+      { path: '/students', icon: User, title: '学生管理' },
+      { path: '/projects', icon: Medal, title: '项目管理' },
+      { path: '/referees', icon: Monitor, title: '裁判管理' },
+      { path: '/equipment', icon: Box, title: '器材管理' }
+    )
+  }
+  return items
+})
+
+// 角色名称映射
+const roleName = computed(() => {
+  return isStudent.value ? '学生' : '管理员'
+})
 
 const handleMenuSelect = (index) => {
   router.push(index)
@@ -116,6 +137,7 @@ const handleCommand = (command) => {
 const handleLogout = () => {
   authStore.logoutAction()
   localStorage.removeItem('token')
+  localStorage.removeItem('userInfo')
   router.push('/login')
 }
 </script>
@@ -156,7 +178,7 @@ const handleLogout = () => {
 
 .logo-icon {
   font-size: 22px;
-  color: #3B82F6;
+  color: #4CAF50;
   margin-right: 10px;
 }
 
@@ -192,9 +214,9 @@ const handleLogout = () => {
 }
 
 .sidebar-menu :deep(.el-menu-item.is-active) {
-  background: #EFF6FF !important;
-  color: #3B82F6 !important;
-  border-left: 3px solid #3B82F6;
+  background: #E8F5E9 !important;
+  color: #2E7D32 !important;
+  border-left: 3px solid #2E7D32;
   padding-left: 13px !important;
 }
 
@@ -205,7 +227,7 @@ const handleLogout = () => {
 }
 
 .sidebar-menu :deep(.el-menu-item.is-active .el-icon) {
-  color: #3B82F6;
+  color: #2E7D32;
 }
 
 .sidebar-user {
@@ -224,7 +246,7 @@ const handleLogout = () => {
 }
 
 .user-avatar :deep(.el-avatar) {
-  border: 2px solid #3B82F6;
+  border: 2px solid #4CAF50;
 }
 
 .user-info {
@@ -253,7 +275,7 @@ const handleLogout = () => {
 }
 
 .logout-btn:hover {
-  color: #3B82F6;
+  color: #4CAF50;
 }
 
 /* 主容器 */

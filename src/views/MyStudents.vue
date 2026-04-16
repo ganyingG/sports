@@ -445,7 +445,7 @@ const getDeptName = (deptId) => {
 
 .title-icon {
   margin-right: 10px;
-  color: #3B82F6;
+  color: #4CAF50;
   font-size: 22px;
 }
 
@@ -454,16 +454,16 @@ const getDeptName = (deptId) => {
   padding: 12px 20px;
   font-weight: 600;
   transition: all 0.3s ease;
-  background: #3B82F6;
+  background: #b4e9b6;
   border: none;
   color: #FFFFFF;
-  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
 }
 
 .add-btn:hover {
-  background: #2563EB;
+  background: #a3d9a4;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
 }
 
 /* 搜索栏 */
@@ -481,8 +481,8 @@ const getDeptName = (deptId) => {
 }
 
 .search-input:focus {
-  border-color: #3B82F6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
 }
 
 .search-btn {
@@ -490,16 +490,16 @@ const getDeptName = (deptId) => {
   height: 44px;
   font-weight: 600;
   width: 100%;
-  background: #3B82F6;
+  background: #b4e9b6;
   border: none;
   color: #FFFFFF;
-  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
 }
 
 .search-btn:hover {
-  background: #2563EB;
+  background: #a3d9a4;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
 }
 
 /* 表格样式 */
@@ -520,14 +520,14 @@ const getDeptName = (deptId) => {
 }
 
 .edit-btn {
-  color: #3B82F6;
+  color: #4CAF50;
   font-weight: 600;
   margin-right: 12px;
 }
 
 .edit-btn:hover {
-  color: #2563EB;
-  background: #EFF6FF;
+  color: #388E3C;
+  background: #E8F5E9;
 }
 
 .delete-btn {
@@ -555,9 +555,9 @@ const getDeptName = (deptId) => {
 }
 
 .pagination :deep(.el-pager li.is-active) {
-  background: #3B82F6;
+  background: #b4e9b6;
   color: #FFFFFF;
-  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
 }
 
 /* 对话框样式 */
@@ -582,8 +582,8 @@ const getDeptName = (deptId) => {
 }
 
 .form-input:focus {
-  border-color: #3B82F6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
 }
 
 .gender-group {
@@ -639,16 +639,16 @@ const getDeptName = (deptId) => {
   border-radius: 10px;
   padding: 12px 24px;
   font-weight: 600;
-  background: #3B82F6;
+  background: #b4e9b6;
   border: none;
   color: #FFFFFF;
-  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
 }
 
 .submit-btn:hover {
-  background: #2563EB;
+  background: #a3d9a4;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
 }
 
 /* 响应式适配 */

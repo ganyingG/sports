@@ -2,7 +2,7 @@
   <div class="register-page">
     <div class="register-card">
       <div class="card-header">
-        <el-icon size="32" color="#3B82F6"><Trophy /></el-icon>
+        <el-icon size="32" color="#4CAF50"><Trophy /></el-icon>
         <h1 class="card-title">注册账号</h1>
       </div>
 
@@ -184,13 +184,13 @@ const handleRegister = async () => {
 }
 
 .register-form :deep(.el-button--primary) {
-  background: #3B82F6;
-  border-color: #3B82F6;
+  background: #b4e9b6;
+  border-color: #b4e9b6;
 }
 
 .register-form :deep(.el-button--primary:hover) {
-  background: #2563EB;
-  border-color: #2563EB;
+  background: #a3d9a4;
+  border-color: #a3d9a4;
 }
 
 .card-footer {
@@ -200,7 +200,7 @@ const handleRegister = async () => {
 }
 
 .card-footer a {
-  color: #3B82F6;
+  color: #4CAF50;
   text-decoration: none;
   margin-left: 4px;
 }

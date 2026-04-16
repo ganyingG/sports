@@ -1,10 +1,10 @@
-/* 商务蓝色系设计系统变量 - Design Tokens */
+/* 商务绿色系设计系统变量 - Design Tokens */
 :root {
   /* ============ 颜色系统 ============ */
-  /* 主色调 - 商务蓝色 */
-  --color-primary-light: #93C5FD;    /* 浅蓝色 */
-  --color-primary: #3B82F6;           /* 主蓝色 */
-  --color-primary-dark: #2563EB;    /* 深蓝色 */
+  /* 主色调 - 商务绿色 */
+  --color-primary-light: #A5D6A7;    /* 浅绿色 */
+  --color-primary: #4CAF50;           /* 主绿色 */
+  --color-primary-dark: #388E3C;    /* 深绿色 */
 
   /* 辅助色 - 莫兰迪色系 */
   --color-secondary: #F3E9D2;          /* 米色调 */
@@ -27,14 +27,14 @@
   /* 边框色 */
   --color-border: #e2e8f0;             /* 默认边框 */
   --color-border-light: #f1f5f9;       /* 浅边框 */
-  --color-border-focus: #3B82F6;         /* 聚焦边框 */
+  --color-border-focus: #4CAF50;         /* 聚焦边框 */
 
   /* 背景色 */
-  --color-bg-page: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+  --color-bg-page: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
   --color-bg-card: rgba(255, 255, 255, 0.85);
   --color-bg-card-hover: rgba(255, 255, 255, 0.95);
   --color-bg-header: #f8fafc;           /* 表头背景 */
-  --color-bg-hover: #EFF6FF;             /* 悬停背景 */
+  --color-bg-hover: #E8F5E9;             /* 悬停背景 */
 
   /* ============ 间距系统 ============ */
   --spacing-xs: 4px;

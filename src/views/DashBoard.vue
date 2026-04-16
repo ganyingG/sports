@@ -139,8 +139,8 @@ const collegeData = ref({ colleges: [], studentCounts: [], projectCounts: [] })
 const projectData = ref({ types: [], counts: [] })
 const refereeData = ref({ colleges: [], counts: [], percentages: [] })
 
-const projectColors = ['#3B82F6', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899', '#6366F1', '#14B8A6', '#F97316']
-const refereeColors = ['#3B82F6', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899', '#6366F1', '#14B8A6', '#F97316']
+const projectColors = ['#CE93D8', '#90CAF9', '#A5D6A7', '#F48FB1', '#FFCC80', '#EF9A9A', '#80CBC4', '#CE93D8']
+const refereeColors = ['#A5D6A7', '#FFCC80', '#CE93D8', '#90CAF9', '#F48FB1', '#80CBC4', '#EF9A9A', '#FFE0B2']
 
 // 获取统计数据
 const fetchStatistics = async () => {
@@ -239,7 +239,7 @@ const initBarChart = () => {
         data: collegeData.value.studentCounts,
         itemStyle: {
           borderRadius: [4, 4, 0, 0],
-          color: '#3B82F6'
+          color: '#90CAF9'
         },
         emphasis: {
           itemStyle: {
@@ -256,7 +256,7 @@ const initBarChart = () => {
         data: collegeData.value.projectCounts,
         itemStyle: {
           borderRadius: [4, 4, 0, 0],
-          color: '#9CA3AF'
+          color: '#FFCC80'
         },
         emphasis: {
           itemStyle: {
@@ -412,23 +412,23 @@ onMounted(async () => {
 }
 
 .stat-icon-blue {
-  background: #EFF6FF;
-  color: #3B82F6;
+  background: #E1BEE7;
+  color: #8E24AA;
 }
 
 .stat-icon-yellow {
-  background: #FEF3C7;
-  color: #F59E0B;
+  background: #FFE0B2;
+  color: #FB8C00;
 }
 
 .stat-icon-pink {
-  background: #FCE7F3;
-  color: #EC4899;
+  background: #F8BBD0;
+  color: #EC407A;
 }
 
 .stat-icon-orange {
-  background: #FFEDD5;
-  color: #F97316;
+  background: #C8E6C9;
+  color: #43A047;
 }
 
 .stat-icon {

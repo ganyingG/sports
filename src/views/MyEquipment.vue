@@ -321,7 +321,7 @@ onMounted(() => {
 
 .title-icon {
   margin-right: 10px;
-  color: #3B82F6;
+  color: #4CAF50;
   font-size: 20px;
 }
 
@@ -340,19 +340,19 @@ onMounted(() => {
 }
 
 .search-input:focus {
-  border-color: #3B82F6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
 }
 
 .equipment-page :deep(.el-button--primary) {
-  background: #3B82F6;
-  border-color: #3B82F6;
+  background: #b4e9b6;
+  border-color: #b4e9b6;
   border-radius: 10px;
 }
 
 .equipment-page :deep(.el-button--primary:hover) {
-  background: #2563EB;
-  border-color: #2563EB;
+  background: #a3d9a4;
+  border-color: #a3d9a4;
 }
 
 /* 表格样式 */
@@ -369,11 +369,11 @@ onMounted(() => {
 }
 
 .equipment-page :deep(.el-table tr:hover) {
-  background: #EFF6FF;
+  background: #E8F5E9;
 }
 
 .equipment-page :deep(.el-button--primary) {
-  color: #3B82F6;
+  color: #4CAF50;
 }
 
 .equipment-page :deep(.el-button--danger) {
@@ -387,7 +387,7 @@ onMounted(() => {
 }
 
 .equipment-page :deep(.el-pagination .el-pager li.is-active) {
-  background: #3B82F6;
+  background: #b4e9b6;
 }
 
 /* 对话框样式 */
@@ -423,7 +423,7 @@ onMounted(() => {
 
 .equipment-page :deep(.el-input:focus),
 .equipment-page :deep(.el-select:focus) {
-  border-color: #3B82F6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
 }
 </style>

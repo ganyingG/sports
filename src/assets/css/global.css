@@ -1,4 +1,4 @@
-/* 全局样式重置 & 通用样式 - 商务蓝色风格 */
+/* 全局样式重置 & 通用样式 - 商务绿色风格 */
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +11,7 @@ html, body, #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #334155;
-  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
 }
 
 /* 自定义滚动条 */
@@ -43,8 +43,8 @@ html, body, #app {
 /* ============ 卡片统一样式 ============ */
 .el-card {
   border-radius: 14px !important;
-  box-shadow: 0 2px 12px rgba(59, 130, 246, 0.08) !important;
-  border: 1px solid rgba(59, 130, 246, 0.15) !important;
+  box-shadow: 0 2px 12px rgba(76, 175, 80, 0.08) !important;
+  border: 1px solid rgba(76, 175, 80, 0.15) !important;
   background: rgba(255, 255, 255, 0.85) !important;
 }
 
@@ -59,20 +59,20 @@ html, body, #app {
 
 /* ============ 按钮统一样式 ============ */
 .el-button--primary {
-  background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%) !important;
+  background: linear-gradient(135deg, #b4e9b6 0%, #a3d9a4 100%) !important;
   border: none !important;
   border-radius: 10px !important;
   padding: 12px 20px !important;
   font-weight: 600 !important;
   transition: all 0.3s ease !important;
   color: #fff !important;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.25);
 }
 
 .el-button--primary:hover {
-  background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%) !important;
+  background: linear-gradient(135deg, #A5D6A7 0%, #b4e9b6 100%) !important;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35) !important;
+  box-shadow: 0 8px 24px rgba(76, 175, 80, 0.35) !important;
 }
 
 /* ============ 输入框统一样式 ============ */
@@ -84,12 +84,12 @@ html, body, #app {
 }
 
 .el-input__wrapper:hover {
-  border-color: #3B82F6 !important;
+  border-color: #4CAF50 !important;
 }
 
 .el-input__wrapper.is-focus {
-  border-color: #3B82F6 !important;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+  border-color: #4CAF50 !important;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15) !important;
 }
 
 /* 下拉选择框 */
@@ -100,7 +100,7 @@ html, body, #app {
 /* ============ 表格统一样式 ============ */
 .el-table {
   --el-table-header-text-color: #475569;
-  --el-table-row-hover-bg-color: #EFF6FF;
+  --el-table-row-hover-bg-color: #E8F5E9;
   --el-table-border-color: #e2e8f0;
   border-radius: 12px;
   overflow: hidden;
@@ -119,7 +119,7 @@ html, body, #app {
 }
 
 .el-table tr:hover > td.el-table__cell {
-  background: #EFF6FF !important;
+  background: #E8F5E9 !important;
 }
 
 /* ============ 对话框统一样式 ============ */
@@ -165,7 +165,7 @@ html, body, #app {
 }
 
 .el-pagination .el-pager li.is-active {
-  background: #3B82F6 !important;
+  background: #b4e9b6 !important;
   color: #fff !important;
 }
 
@@ -198,19 +198,19 @@ html, body, #app {
 }
 
 .el-tag--primary {
-  background: rgba(59, 130, 246, 0.1) !important;
-  color: #3B82F6 !important;
+  background: rgba(76, 175, 80, 0.1) !important;
+  color: #4CAF50 !important;
 }
 
 /* ============ 操作按钮统一样式 ============ */
 .el-button--primary.is-link {
-  color: #3B82F6 !important;
+  color: #4CAF50 !important;
   font-weight: 600 !important;
 }
 
 .el-button--primary.is-link:hover {
-  color: #2563EB !important;
-  background: rgba(59, 130, 246, 0.1) !important;
+  color: #388E3C !important;
+  background: rgba(76, 175, 80, 0.1) !important;
 }
 
 .el-button--danger.is-link {
