@@ -23,6 +23,7 @@ request.interceptors.request.use(
     if (!token) {
       token = localStorage.getItem('token') || ''
     }
+    console.log('🔍 请求token:', token, 'url:', config.url)
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`
     }

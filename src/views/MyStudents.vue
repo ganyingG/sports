@@ -599,6 +599,8 @@ const getDeptName = (deptId) => {
   --el-dialog-border-radius: 16px;
   --el-dialog-title-color: #111827;
   --el-dialog-title-font-size: 18px;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
 }
 
 .student-form {

@@ -231,7 +231,23 @@ const rules = {
     { required: true, message: '请输入场地', trigger: 'blur' }
   ],
   competitionTime: [
-    { required: true, message: '请选择比赛时间', trigger: 'change' }
+    { required: true, message: '请选择比赛时间', trigger: 'change' },
+    {
+      validator: (rule, value, callback) => {
+        if (value && registrationRange.value && registrationRange.value.length === 2) {
+          const competitionTime = new Date(value)
+          const registrationEnd = new Date(registrationRange.value[1])
+          if (competitionTime < registrationEnd) {
+            callback(new Error('比赛时间不能早于报名截止时间'))
+          } else {
+            callback()
+          }
+        } else {
+          callback()
+        }
+      },
+      trigger: 'change'
+    }
   ],
   projectType: [
     { required: true, message: '请选择项目类型', trigger: 'change' }
@@ -473,6 +489,8 @@ onMounted(() => {
 /* 对话框样式 */
 .projects-page :deep(.el-dialog) {
   border-radius: 16px;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
 }
 
 .projects-page :deep(.el-dialog__header) {

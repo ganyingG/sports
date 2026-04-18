@@ -438,6 +438,8 @@ onMounted(() => {
 /* 对话框样式 */
 .equipment-page :deep(.el-dialog) {
   border-radius: 16px;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
 }
 
 .equipment-page :deep(.el-dialog__header) {

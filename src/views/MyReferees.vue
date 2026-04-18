@@ -470,6 +470,8 @@ onMounted(() => {
 /* 对话框样式 */
 .referees-page :deep(.el-dialog) {
   border-radius: 16px;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
 }
 
 .referees-page :deep(.el-dialog__header) {
